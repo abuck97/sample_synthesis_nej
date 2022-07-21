@@ -34,35 +34,40 @@
 
 1. Clone this git repo. `git clone git@github.com:abuck97/sample_synthesis_nej.git`
 
-2. The .synopsys_dc.setup file seems to be run in synopsys when you start it. We've set the library paths here. It would probably be a good idea to move this into a proper script that just gets sourced so it's easier to find 
+2. To synthesize the design in GF12nm, just run "make run_dc" 
 
-3. To synthesize the design in GF12nm, just run "make run_dc" 
+3. To synthesize in TSMC 65 nm, you'll need to edit the `scripts/run_dc.tcl` file to point to the correct libraries. See the comments within the file to see what needs to be changed
 
-4. To synthesize in TSMC 65 nm, you'll need to edit the `scripts/run_dc.tcl` file to point to the correct libraries. See the comments within the file to see what needs to be changed
+4. Reports are in the "rpts" folder. Netlists are in the "results" folder. 
 
-5. Reports are in the "rpts" folder. Netlists are in the "results" folder. 
+5. You can open the GUI with the command `start_gui` if you want to see the schematic of the design.
 
  
 
 ## Some notes:  
 
-In GF12, within this tech node, there are quite a few different process options. See `/CMC/kits/gf12_libs/Synopsys/Invecas/`. You can either have 14nm or 16nm gates. And Super low (SL), low (L), regular (R), and high (H) voltage thresholds. I chose 14nm with R VT. 
+- In GF12, within this tech node, there are quite a few different process options. See `/CMC/kits/gf12_libs/Synopsys/Invecas/`. You can either have 14nm or 16nm gates. And Super low (SL), low (L), regular (R), and high (H) voltage thresholds. I chose 14nm with R VT. 
 
-For the tech library, there seem to be two options that I'm not sure the difference between. At `/CMC/kits/gf12_libs/Synopsys/Invecas/IN12LP_SC9T_84CPP_BASE_SSC14R_FDK_RELV00R20/model/timing`, I can find .db files in both the "ccs_lib" and "lib" directories. I chose ccs_lib because another script referenced using ccs once, but not sure of the actual difference. 
+- For the tech library, there seem to be two options that I'm not sure the difference between. At `/CMC/kits/gf12_libs/Synopsys/Invecas/IN12LP_SC9T_84CPP_BASE_SSC14R_FDK_RELV00R20/model/timing`, I can find .db files in both the "ccs_lib" and "lib" directories. I chose ccs_lib because another script referenced using ccs once, but not sure of the actual difference. 
 
-When doing report_power, you want to make sure the clock is at the actual FMax rather than some ridiculously high number. Otherwise your dynamic power will be higher than actual 
+- When doing report_power, you want to make sure the clock is at the actual FMax rather than some ridiculously high number. Otherwise your dynamic power will be higher than actual. You can change this by simply doing a `create_clock` command to your actual period and then rerunning report_power.
+
+- The Synopsys design compiler user guide can be found here: https://picture.iczhiku.com/resource/eetop/wYKfeQTQHSRITVVC.pdf
+It's for a slightly newer version, but is still a good resource.
+
+- Units (for time and area) can change between libraries. GF12 uses ps and um, TSMC65 uses ns and um. To check which units are being used, you can look at the .lib library files and/or the datasheets for the libraries.
 
 
 ## Overview of files
 ### makefile
 Simple makefile that shows how to run a script through DC Shell. 
 
-Usage:
-make run_dc # runs DC shell with script file; output is dumped to dc_shell_log.txt
-make clean  # cleanup leftover files from prior run 
+    Usage:
+        make run_dc # runs DC shell with script file; output is dumped to dc_shell_log.txt
+        make clean  # cleanup leftover files from prior run 
 
 
 ### Script File (./scripts/run_dc.tcl)
-This file runs all of the DC Shell TCL commands needed to build the DSP block
+This file runs all of the DC Shell TCL commands needed to build the multiplier
 example module. It is passed as an arg to DC shell by the makefile target
 "run_dc".
