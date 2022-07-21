@@ -32,9 +32,7 @@
 
 # Steps for synthesizing GF12 nm 
 
-1. Get the following git repo: https://github.com/abuck97/sample_synthesis 
-
-    1. Contact Alex Buck (alexander.buck@mail.utoronto.ca or abuck97@gmail.com) if you need permission  
+1. Clone this git repo. `git clone git@github.com:abuck97/sample_synthesis_nej.git`
 
 2. The .synopsys_dc.setup file seems to be run in synopsys when you start it. We've set the library paths here. It would probably be a good idea to move this into a proper script that just gets sourced so it's easier to find 
 
