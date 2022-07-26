@@ -57,6 +57,17 @@ It's for a slightly newer version, but is still a good resource.
 
 - Units (for time and area) can change between libraries. GF12 uses ps and um, TSMC65 uses ns and um. To check which units are being used, you can look at the .lib library files and/or the datasheets for the libraries.
 
+## How to deal with RAM:
+
+You have two options.
+1. Remove all SRAMs from RTL and push their ports up to the top level.
+For example, you would remove the instantiation of nv_ram_rwsp_80x514 from the RTL; If nv_ram_rwsp_80x514 has a port, say 'datain', you should connect 'datain' to the top level interface.
+The problem with this approach is that you can't take the SRAM delay into consideration for the max frequency. The area estimate (excluding SRAMs) will be fine though.
+
+2. Generate the SRAM blocks using an SRAM compiler. The compiler will generate Verilog files that you can add to your RTL, and .lib files that you can convert into .db and use with Synopsys design compiler.
+This is the most accurate and complete approach. Area and delay of the SRAM is taken into consideration.
+We have an SRAM compiler from ARM that works with TSMC65, it's located in /CMC/kits/arm/tsmc/cln65gplus/
+
 
 ## Overview of files
 ### makefile
