@@ -6,18 +6,20 @@
 
 # ============ CHANGE HERE ===========
 # Add any paths you want for DC Shell to search for filepaths without absolute paths
-set search_path "./src . /CMC/kits/gf12_libs/Synopsys/Invecas/IN12LP_SC9T_84CPP_BASE_SSC14R_FDK_RELV00R20/model/timing/ccs_db" 
+# To use GF12, uncomment the following line
+#set search_path "./src . /CMC/kits/gf12_libs/Synopsys/Invecas/IN12LP_SC9T_84CPP_BASE_SSC14R_FDK_RELV00R20/model/timing/ccs_db" 
 
 #If using TSMC 65nm, uncomment the following line and comment the above line
-#set search_path "../src/dsp/ ../src . /CMC/kits/tsmc_65nm_libs/tcbn65gplus/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65gplus_140b"
+set search_path "../src/dsp/ ../src . /CMC/kits/tsmc_65nm_libs/tcbn65gplus/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65gplus_140b"
 
 # Database files containing all of the cell information need to synthesize
-set link_library "IN14LPP_SC9T_84CPP_BASE_SSC14R_TT_0P80V_25C_ccs.db"
-set target_library "IN14LPP_SC9T_84CPP_BASE_SSC14R_TT_0P80V_25C_ccs.db"
+# If using GF12, uncomment the following lines and comment the lines below.
+#set link_library "IN14LPP_SC9T_84CPP_BASE_SSC14R_TT_0P80V_25C_ccs.db"
+#set target_library "IN14LPP_SC9T_84CPP_BASE_SSC14R_TT_0P80V_25C_ccs.db"
 
 #If using TSMC 65nm, uncomment the following lines and comment the above lines:
-#set link_library "tcbn65gpluswc.db"
-#set target_library "tcbn65gpluswc.db"
+set link_library "tcbn65gpluswc.db"
+set target_library "tcbn65gpluswc.db"
 set verilog_files [list multiplier.v full_adder.v]
 # ============ END CHANGE ============
 
