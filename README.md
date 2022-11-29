@@ -22,7 +22,7 @@
 
 5. Once logged in, you can check you have the proper access by running the `groups` command and seeing whether you're part of "cmcgfut" 
 
-6. Before running design compiler, you'll need to run `source /CMC/tools/CSHRCs/Synopsys.2017.09`. This needs to be done each time you login again. You can put it into your .cshrc or create an alias for it to make it easier 
+6. Before running design compiler, you'll need to run `source /CMC/tools/CSHRCs/Cadence; source /CMC/tools/CSHRCs/Synopsys.2017.09`. This needs to be done each time you login again. You can put it into your .cshrc or create an alias for it to make it easier. I don't know why Cadence also needs to be sourced, but when I don't, I get an error opening dc_shell.
 
 7. Ensure you can run design compiler by running `dc_shell-t -64`. If it opens up, yay. Otherwise, it's time to debug. For help, you can check here: https://wiki.ece.utoronto.ca/doku.php/userdoc:licensed_software and/or email ecehelp@ece.utoronto.ca 
 
