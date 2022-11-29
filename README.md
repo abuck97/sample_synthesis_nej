@@ -30,13 +30,13 @@
 
  
 
-# Steps for synthesizing GF12 nm 
+# Steps for synthesizing 
 
 1. Clone this git repo. `git clone git@github.com:abuck97/sample_synthesis_nej.git`
 
-2. To synthesize the design in GF12nm, just run "make run_dc" 
+2. To synthesize the design in TSMC 65 nm, just run "make run_dc" 
 
-3. To synthesize in TSMC 65 nm, you'll need to edit the `scripts/run_dc.tcl` file to point to the correct libraries. See the comments within the file to see what needs to be changed
+3. To synthesize in GF12nm, you'll need to edit the `scripts/run_dc.tcl` file to point to the correct libraries. See the comments within the file to see what needs to be changed
 
 4. Reports are in the "rpts" folder. Netlists are in the "results" folder. 
 
