@@ -2,7 +2,7 @@
 
 ## Steps taken for basic setup (CAD and tech nodes): 
 
-1. You need a CMC account from cmc.ca 
+1. You need a CMC account from cmc.ca. More insturctions are here: http://www.vrg.utoronto.ca/~jaro/VRG/licenses/CMC_subscription.txt
 
 2. Have your supervisor approve the request 
 
