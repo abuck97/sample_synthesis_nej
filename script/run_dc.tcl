@@ -10,7 +10,7 @@
 #set search_path "./src . /CMC/kits/gf12_libs/Synopsys/Invecas/IN12LP_SC9T_84CPP_BASE_SSC14R_FDK_RELV00R20/model/timing/ccs_db" 
 
 #If using TSMC 65nm, uncomment the following line and comment the above line
-set search_path "../src/dsp/ ../src . /CMC/kits/tsmc_65nm_libs/tcbn65gplus/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65gplus_140b"
+set search_path "./src . /CMC/kits/tsmc_65nm_libs/tcbn65gplus/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65gplus_140b"
 
 # Database files containing all of the cell information need to synthesize
 # If using GF12, uncomment the following lines and comment the lines below.
