@@ -67,7 +67,7 @@ The problem with this approach is that you can't take the SRAM delay into consid
 2. Generate the SRAM blocks using an SRAM compiler. The compiler will generate Verilog files that you can add to your RTL, and .lib files that you can convert into .db and use with Synopsys design compiler.
 This is the most accurate and complete approach. Area and delay of the SRAM is taken into consideration.
 We have an SRAM compiler from ARM that works with TSMC65, it's located in `/CMC/kits/arm/tsmc/cln65gplus/`.
-The memory compiler doesn't work on anubis, it does work on bastet.
+The memory compiler doesn't work on anubis, it supposedly works on bastet, but it still fails for me. Instead, I found it to work on the UG machines. To use the library_compiler in Synopsys, need to open with `/CMC/tools/synopsys/lc_vM-2016.12-SP3/linux64/lc/bin/lc_shell`. As part of the regular dc_shell, it doesn't seem to be licensed. Then run `read_lib <your_lib.lib>` and `write_lib <your_lib>`.
 
 
 ## Overview of files
